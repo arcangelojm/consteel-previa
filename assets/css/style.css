@@ -351,3 +351,4 @@ tbody th { font-weight: 600; }
 .hero .foto img { border-radius: var(--r-lg); border-top: 3px solid var(--destaque); box-shadow: var(--sombra-flutuante); background: var(--sup-escura); }
 .card > .foto:first-child { margin: calc(var(--s5) * -1) calc(var(--s5) * -1) var(--s2); }
 .card > .foto:first-child img { border-radius: var(--r-md) var(--r-md) 0 0; }
+.hero .foto figcaption { color: var(--linha); }
