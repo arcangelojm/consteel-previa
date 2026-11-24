@@ -343,15 +343,14 @@ tbody th { font-weight: 600; }
 .selo-estrutura { position: fixed; right: 12px; bottom: 72px; z-index: 80; background: #c9a227; color: #1b1500; font-size: .75rem; font-weight: 800; padding: 6px 10px; border-radius: var(--r-xs); }
 
 /* Fotos reais (tools/aplicar_imagens.py) */
-.foto { margin: 0; }
+.foto { position: relative; margin: 0; }
 .foto img { width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; border-radius: var(--r-md); background: var(--linha); }
 .foto--wide img { aspect-ratio: 16 / 9; }
-.foto figcaption { margin-top: var(--s2); font-size: .8125rem; color: var(--texto-suave); }
-.section--dark .foto figcaption { color: var(--linha); }
+/* Legenda sempre sobre a foto, no canto inferior esquerdo: não empurra o texto, então cards e colunas ficam alinhados */
+.foto figcaption { position: absolute; left: 10px; bottom: 10px; max-width: calc(100% - 20px); margin: 0; padding: 4px 10px; border-radius: var(--r-sm); background: rgba(20, 26, 34, .8); color: var(--branco); font-size: .75rem; font-weight: 600; line-height: 1.35; pointer-events: none; }
 .hero .foto img { border-radius: var(--r-lg); border-top: 3px solid var(--destaque); box-shadow: var(--sombra-flutuante); background: var(--sup-escura); }
 .card > .foto:first-child { margin: calc(var(--s5) * -1) calc(var(--s5) * -1) var(--s2); }
 .card > .foto:first-child img { border-radius: var(--r-md) var(--r-md) 0 0; }
-.hero .foto figcaption { color: var(--linha); }
 
 /* Simetria das imagens (24/11/2026) */
 /* Hero: duas colunas iguais; a imagem acompanha a altura do bloco de texto */
@@ -362,11 +361,12 @@ tbody th { font-weight: 600; }
   .hero .wrap > .foto img { flex: 1; height: 100%; min-height: 420px; aspect-ratio: auto; }
 }
 /* Imagem sozinha no meio do texto: centralizada, 16:9, no máximo 960 px (antes ocupava 1280 px em 4:3) */
-.section .wrap > .foto { max-width: 960px; margin: var(--s6) auto; }
-.section .wrap > .foto img { aspect-ratio: 16 / 9; }
-.section .wrap > .foto figcaption { text-align: center; }
+/* Imagem no meio do texto: mesma largura e mesmas margens do texto e dos cards, em faixa 21:9 */
+.section .wrap > .foto { margin-block: var(--s6); }
+.section .wrap > .foto img { aspect-ratio: 21 / 9; }
+@media (max-width: 767px) { .section .wrap > .foto img { aspect-ratio: 4 / 3; } }
 /* Autor: foto quadrada de tamanho fixo ao lado do texto */
-.autor { display: grid; grid-template-columns: 160px 1fr; gap: var(--s5); font-size: var(--fs-body); }
+.autor { display: grid; grid-template-columns: 200px 1fr; gap: var(--s6); align-items: center; font-size: var(--fs-body); }
 .autor > .foto img { aspect-ratio: 1; border-radius: var(--r-md); }
-.autor > .foto figcaption { font-size: .6875rem; line-height: 1.35; }
-@media (max-width: 767px) { .autor { grid-template-columns: 96px 1fr; gap: var(--s4); font-size: var(--fs-small); } }
+.autor > .foto figcaption { left: 6px; bottom: 6px; max-width: calc(100% - 12px); padding: 3px 6px; font-size: .6875rem; }
+@media (max-width: 767px) { .autor { grid-template-columns: 1fr; gap: var(--s4); font-size: var(--fs-small); } .autor > .foto { max-width: 220px; } }
