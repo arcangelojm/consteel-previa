@@ -149,6 +149,8 @@ main ol:not([class]) > li::marker { font-weight: 800; font-variant-numeric: tabu
 .header .wrap { display: flex; align-items: center; gap: var(--s5); min-height: 84px; }
 .logo { flex: none; font: 800 1.5rem/1 var(--fonte); font-stretch: 112%; letter-spacing: .03em; text-transform: uppercase; color: var(--branco); text-decoration: none; }
 .logo b { color: var(--destaque); font-weight: 800; }
+.logo img { display: block; width: 210px; height: auto; }
+@media (max-width: 767px) { .logo img { width: 170px; } }
 .logo small { display: block; margin-top: 6px; font-size: .625rem; font-weight: 600; font-stretch: 100%; letter-spacing: .04em; text-transform: none; color: var(--linha); white-space: nowrap; }
 .logo:hover { color: var(--branco); }
 .nav { margin-left: auto; }
@@ -339,3 +341,13 @@ tbody th { font-weight: 600; }
 
 /* Selo de rascunho (sai quando a página fica pronta) */
 .selo-estrutura { position: fixed; right: 12px; bottom: 72px; z-index: 80; background: #c9a227; color: #1b1500; font-size: .75rem; font-weight: 800; padding: 6px 10px; border-radius: var(--r-xs); }
+
+/* Fotos reais (tools/aplicar_imagens.py) */
+.foto { margin: 0; }
+.foto img { width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; border-radius: var(--r-md); background: var(--linha); }
+.foto--wide img { aspect-ratio: 16 / 9; }
+.foto figcaption { margin-top: var(--s2); font-size: .8125rem; color: var(--texto-suave); }
+.section--dark .foto figcaption { color: var(--linha); }
+.hero .foto img { border-radius: var(--r-lg); border-top: 3px solid var(--destaque); box-shadow: var(--sombra-flutuante); background: var(--sup-escura); }
+.card > .foto:first-child { margin: calc(var(--s5) * -1) calc(var(--s5) * -1) var(--s2); }
+.card > .foto:first-child img { border-radius: var(--r-md) var(--r-md) 0 0; }
